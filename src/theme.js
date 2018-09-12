@@ -1,7 +1,6 @@
 import { createTheme } from 'arwes';
 
-const customColors = {
-  main: 'red'
+const theme = {
 };
 
-export default createTheme({ customColors });
+export default createTheme(theme);

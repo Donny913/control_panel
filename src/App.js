@@ -1,25 +1,47 @@
 import React, { Component } from 'react';
-import { ThemeProvider, withStyles, Arwes, Button } from 'arwes';
-import basicStylesTheme from './theme';
+import { Arwes, Button, Frame } from 'arwes';
+
+import './styles.css';
 
 const background = 'https://i.pinimg.com/originals/d7/8d/40/d78d4069da54ade6085b7d540cfde597.jpg';
-// const background =
 
-const CustomText = withStyles(theme => ({
-  customText: { color: theme.customColors.main }
-}))(props => <div className={props.classes.customText}>wow</div>);
+class Launcher extends Component {
+  state = {
+    show: true
+  };
 
-class App extends Component {
   render() {
+    const { show } = this.state;
     return (
-      <ThemeProvider theme={basicStylesTheme}>
-        <Arwes background={background}>
-          <Button>Click me</Button>
-          <CustomText />
-        </Arwes>
-      </ThemeProvider>
+      <Arwes background={background}>
+        <div className="center btns-panel">
+          <Button animate className="button">
+            &#8592;
+          </Button>
+          <div className="center vertical">
+            <Button animate className="button">
+              &#8593;
+            </Button>
+            <Button animate className="button">
+              &#8595;
+            </Button>
+          </div>
+          <Button animate className="button">&#8594;</Button>
+        </div>
+        <Frame
+          show={show}
+          animate
+          level={3}
+          corners={4}
+          layer="primary"
+        >
+          <div style={{ padding: '20px 40px', fontSize: '32px' }}>
+            Cyberpunk
+          </div>
+        </Frame>
+      </Arwes>
     );
   }
 }
 
-export default App;
+export default Launcher;
