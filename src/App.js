@@ -7,21 +7,31 @@ const AutomaticUI = () => <div className="automatic-ui-wrapper center"><Loading 
 
 
 const ManualUI = () => (
-  <div className="center btns-panel">
-    <Button animate className="button">
-    &#8592;
-    </Button>
-    <div className="center vertical">
-      <Button animate className="button center">
-      &#8593;
+  <div className="btns-panel">
+    <div className="action-btns">
+      <Button animate layer="secondary" className="button">
+        Patrol
       </Button>
-      <Button animate className="button">
-      &#8595;
+      <Button animate layer="alert" className="button">
+        Fire
       </Button>
     </div>
-    <Button animate className="button">
-    &#8594;
-    </Button>
+    <div className="movement-btns center">
+      <Button animate className="button">
+        &#8592;
+      </Button>
+      <div className="center vertical">
+        <Button animate className="button center">
+          &#8593;
+        </Button>
+        <Button animate className="button">
+          &#8595;
+        </Button>
+      </div>
+      <Button animate className="button">
+        &#8594;
+      </Button>
+    </div>
   </div>
 );
 class App extends Component {
@@ -35,7 +45,7 @@ class App extends Component {
 
   setManual = () => this.setMode('manual');
 
-  getBtnsProps = type => this.state.mode === type ? { disabled: true } : { disabled: false }
+  getBtnsProps = type => this.state.mode === type ? { layer: 'success' } : { disabled: false };
 
   render() {
     const { mode } = this.state;
@@ -44,15 +54,22 @@ class App extends Component {
         <div className="center btns-checker">
           <div className="btns-checker__header">
             <Heading node="h4">
-              mode:
+mode:
               {' '}
               {mode}
             </Heading>
           </div>
-          <Button {...this.getBtnsProps('automatic')} onClick={this.setAutomatic}>
+          <Button
+            {...this.getBtnsProps('automatic')}
+            onClick={this.setAutomatic}
+          >
             Automatic
           </Button>
-          <Button {...this.getBtnsProps('manual')} style={{ width: '110px' }} onClick={this.setManual}>
+          <Button
+            {...this.getBtnsProps('manual')}
+            style={{ width: '110px' }}
+            onClick={this.setManual}
+          >
             Manual
           </Button>
         </div>

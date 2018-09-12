@@ -21,7 +21,16 @@ h4 {
 
 .btns-panel {
   width: 500px;
-  margin: 45px auto;
+  margin: 78px auto 0;
+  position: relative;
+}
+
+.action-btns {
+  width: 100%;;
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: -66px;
 }
 
 .btns-checker {
