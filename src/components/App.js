@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { Arwes, Button, Heading } from 'arwes';
 import ManualUI from './ManualUI';
 import AutomaticUI from './AutomaticUI';
+import commandsActions from '../logic/commandsActions';
 
 const background = 'https://i.pinimg.com/originals/d7/8d/40/d78d4069da54ade6085b7d540cfde597.jpg';
-
-const commands = ['Привет, мир', 'Ура пионерам'];
-const grammar = `#JSGF V1.0; grammar commands; public <command> = ${commands.join(
-  ' | '
-)} ;`;
 class App extends Component {
   state = {
     mode: 'manual'
@@ -22,11 +18,7 @@ class App extends Component {
 
   listenToSpeech = () => {
     const SpeechRecognitionConstructor = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const SpeechGrammarListConstructor = window.SpeechGrammarList || window.webkitSpeechGrammarList;
     const recognition = new SpeechRecognitionConstructor();
-    const speechRecognitionList = new SpeechGrammarListConstructor();
-    speechRecognitionList.addFromString(grammar, 1);
-    recognition.grammars = speechRecognitionList;
     recognition.lang = 'ru-RU';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
@@ -34,20 +26,18 @@ class App extends Component {
       console.log(e.results);
       const command = e.results[e.results.length - 1][0].transcript;
       console.log(command);
+      commandsActions.checkCommand(command);
+      setTimeout(this.listenToSpeech, 0);
     };
     recognition.onspeechend = () => {
       console.log('end recognition');
       recognition.stop();
     };
-    recognition.onnomatch = () => {
-      console.log(
-        'didnt recognise'
-      );
-    };
     recognition.onerror = (event) => {
       console.log(
         event.error
       );
+      setTimeout(this.listenToSpeech, 0);
     };
     console.log('start recognition');
     recognition.start();
