@@ -12,7 +12,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "mobile": "npm run build && node scripts/buildMobile.js && cd ./cordova && cordova run android",
+    "mobile-deploy": "node scripts/buildMobile.js && cd ./cordova && cordova run android"
   },
   "devDependencies": {
     "eslint": "^5.5.0",
@@ -21,6 +23,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.22.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-react": "^7.11.1",
+    "fs-extra": "^7.0.0"
   }
 }
