@@ -20,7 +20,7 @@ h4 {
 }
 
 .btns-panel {
-  width: 500px;
+  max-width: 500px;
   margin: 78px auto 0;
   position: relative;
 }
@@ -34,7 +34,7 @@ h4 {
 }
 
 .btns-checker {
-  width: 500px;
+  max-width: 99vw;
   margin: 20px auto 0;
 }
 
@@ -43,7 +43,7 @@ h4 {
 }
 
 .btns-mode-title {
-  width: 500px;
+  max-width: 500px;
   margin: 20px auto 0;
 }
 

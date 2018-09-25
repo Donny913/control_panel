@@ -10,11 +10,11 @@ class App extends Component {
     mode: 'manual'
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.mode !== 'automatic' && this.state.mode === 'automatic') {
-      this.listenToSpeech();
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  // if (prevState.mode !== 'automatic' && this.state.mode === 'automatic') {
+  // this.listenToSpeech();
+  //   }
+  // }
 
   listenToSpeech = () => {
     const SpeechRecognitionConstructor = window.SpeechRecognition || window.webkitSpeechRecognition;
